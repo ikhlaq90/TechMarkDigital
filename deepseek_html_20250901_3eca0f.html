@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMarkDigital - Complete Digital Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #22d3ee;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header and Navigation - IMPROVED */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            padding: 0 5%;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 112%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-img {
+            background-image: url(./assets/logofile.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 150px;
+            height: 50px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 12px 20px;
+            position: relative;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        
+        /* Button-like menu items */
+        .nav-links a:not(.menu-btn):after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.08);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+            border-radius: 30px;
+            z-index: -1;
+        }
+        
+        .nav-links a:not(.menu-btn):hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:not(.menu-btn):hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Special style for active menu item */
+        .nav-links a.active {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 18px rgba(37, 99, 235, 0.25);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--dark);
+            margin: 4px 0;
+            transition: 0.3s;
+            border-radius: 3px;
+        }
+        
+        /* Banner Slider */
+        .banner-slider {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-1 {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+        }
+        
+        .slide-2 {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+        }
+        
+        .slide-3 {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80');
+        }
+        
+        .slide-content {
+            max-width: 800px;
+            padding: 0 50px;
+        }
+        
+        .slide h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .slide p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .slider-dot.active {
+            background: white;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80') center/cover;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 18px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .service-card:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            bottom: 0;
+            left: 0;
+            transition: height 0.3s ease;
+            z-index: -1;
+        }
+        
+        .service-card:hover:after {
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        
+        .service-card:hover .service-icon {
+            color: white;
+        }
+        
+        .service-card:hover h3 {
+            color: white;
+        }
+        
+        .service-card:hover p {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            transition: color 0.3s;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .testimonials .section-title h2 {
+            color: white;
+        }
+        
+        .testimonials .section-title p {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card p {
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        
+        .client {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-right: 20px;
+            font-size: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .map {
+            margin-top: 40px;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #fff;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 20px;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(73, 71, 71, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5664a3;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #ddd;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 1920px) {
+            .container {
+                max-width: 1600px;
+            }
+            
+            .slide h1 {
+                font-size: 56px;
+            }
+            
+            .slide p {
+                font-size: 24px;
+            }
+            
+            .slide-content {
+                max-width: 1000px;
+            }
+            
+            .about-content {
+                gap: 100px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 40px;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 40px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .slide h1 {
+                font-size: 42px;
+            }
+            
+            .nav-links a {
+                padding: 10px 16px;
+                font-size: 15px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .stats {
+                flex-wrap: wrap;
+            }
+            
+            .stat-item {
+                flex: 1 0 40%;
+                margin-bottom: 20px;
+            }
+            
+            .slide h1 {
+                font-size: 36px;
+            }
+            
+            .slide p {
+                font-size: 18px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                background: white;
+                width: 100%;
+                flex-direction: column;
+                padding: 30px 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                transition: 0.4s;
+                z-index: 999;
+                height: calc(100vh - 80px);
+                overflow-y: auto;
+                gap: 0;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px;
+                font-size: 18px;
+                border-radius: 10px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .btn {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 22px;
+            }
+            
+            .logo-img {
+                width: 120px;
+                height: 40px;
+            }
+            
+            .slide h1 {
+                font-size: 32px;
+            }
+            
+            .slide p {
+                font-size: 16px;
+            }
+            
+            .slide-content {
+                padding: 0 20px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .stat-item {
+                flex: 1 0 100%;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .about-image {
+                height: 350px;
+            }
+            
+            .service-card {
+                padding: 30px 20px;
+            }
+            
+            .testimonial-card {
+                padding: 20px;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .slide h1 {
+                font-size: 28px;
+            }
+            
+            .slide p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .section-title p {
+                font-size: 16px;
+            }
+            
+            .about-image {
+                height: 280px;
+            }
+            
+            .service-icon {
+                font-size: 40px;
+            }
+            
+            .service-card h3 {
+                font-size: 20px;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .info-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .map {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-img"></div>
+                    <!-- Tech<span>Mark</span>Digital -->
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="#contact" class="btn">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Slider -->
+    <div class="banner-slider">
+        <div class="slide slide-1 active">
+            <div class="container">
+                <div class="slide-content">
+                    <h1>Complete Digital Solutions for Your Business</h1>
+                    <p>5 years of excellence in providing top-notch digital services with 95% client satisfaction rate</p>
+                    <a href="#services" class="btn">Explore Our Services</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide slide-2">
+            <div class="container">
+                <div class="slide-content">
+                    <h1>Professional IT Services & Network Solutions</h1>
+                    <p>From PC maintenance to complex networking solutions, we've got you covered</p>
+                    <a href="#services" class="btn">Our IT Services</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide slide-3">
+            <div class="container">
+                <div class="slide-content">
+                    <h1>Social Media Marketing & Brand Building</h1>
+                    <p>Increase your online presence and grow your business with our expert marketing strategies</p>
+                    <a href="#contact" class="btn">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About TechMarkDigital</h2>
+                    <p>For the past 5 years, TechMarkDigital has been at the forefront of providing comprehensive digital solutions to businesses of all sizes. Our commitment to excellence and customer satisfaction has made us a trusted partner for over 200 clients.</p>
+                    <p>We pride ourselves on delivering high-quality services that help businesses grow and thrive in the digital landscape. Our team of experts is dedicated to understanding your unique needs and providing tailored solutions that drive results.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="5">0+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="200">0+</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="95">0%</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive digital solutions to help your business grow</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-desktop"></i></div>
+                    <h3>WordPress Websites</h3>
+                    <p>Custom WordPress development with responsive design, SEO optimization, and user-friendly interfaces.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                    <h3>Custom-Coded Websites</h3>
+                    <p>Bespoke website development tailored to your specific business needs and requirements.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Website Maintenance</h3>
+                    <p>Regular updates, security monitoring, and technical support to keep your website running smoothly.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-share-alt"></i></div>
+                    <h3>Social Media Marketing</h3>
+                    <p>Strategic social media campaigns to increase brand awareness and engage with your audience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                    <h3>Brand Building</h3>
+                    <p>Comprehensive branding solutions including logo design, brand guidelines, and identity development.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-server"></i></div>
+                    <h3>IT Services</h3>
+                    <p>Professional IT support, network setup, and technology consulting for businesses.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Networking Solutions</h3>
+                    <p>Design, implementation, and management of secure and efficient business networks.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop"></i></div>
+                    <h3>PC Maintenance</h3>
+                    <p>Regular maintenance, troubleshooting, and repair services for all your computer systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Document Scanning Solutions</h3>
+                    <p>Digitize your documents with our professional scanning services and document management systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-search"></i></div>
+                    <h3>SEO Services</h3>
+                    <p>Search Engine Optimization to improve your website's visibility and ranking on search engines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>What our clients say about our services</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"TechMarkDigital created an excellent website for our law firm. Their attention to detail and understanding of our needs was impressive. The website has helped us attract more clients and present a professional image."</p>
+                    <div class="client">
+                        <div class="client-avatar">A</div>
+                        <div>
+                            <h4>Advocate Ashar</h4>
+                            <p>Mohnsin Shah Wani Law Associates</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The team at TechMarkDigital developed a comprehensive accounting website for us that perfectly represents our services. Their custom-coded solution has improved our online presence significantly."</p>
+                    <div class="client">
+                        <div class="client-avatar">A</div>
+                        <div>
+                            <h4>Amar Shahwani</h4>
+                            <p>True Balance Accounting</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"We partnered with TechMarkDigital for our document scanning project with UN Aid. Their team delivered exceptional results with attention to detail and met all our requirements efficiently."</p>
+                    <div class="client">
+                        <div class="client-avatar">A</div>
+                        <div>
+                            <h4>Ameen</h4>
+                            <p>UN Aid Project Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"TechMarkDigital's social media marketing strategies have significantly increased our school's online engagement. They helped us connect with parents and students more effectively."</p>
+                    <div class="client">
+                        <div class="client-avatar">W</div>
+                        <div>
+                            <h4>World Academy School</h4>
+                            <p>Karachi, Pakistan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for a free consultation</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>B-269, Main M.A Jinnah Road Naz Plaza, Karachi</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>ikhlaq.ashfaq1990@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+92 345 2937216<br>+92 331 0362567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <div>
+                            <h4>Social Media</h4>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/techmarkdigitalofficial?igsh=MXNuZGlpYXV6bzRrNA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/share/1ZBJf7y96F/" target="_blank"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Message</h3>
+                    <!-- Form action updated to send to ikhlaq.ashfaq1990@gmail.com -->
+                    <form action="https://script.google.com/macros/s/AKfycbyVdS83YRV0L5dOtGrFIpHNkfqnYMSIRbF-u7S1j4uCEXzrM1H0jmW9P3vmrnyrcAuafg/exec" method="POST">
+                        <!-- FormSubmit configuration -->
+                        <input type="hidden" name="subject" value="New Contact Form Submission - TechMarkDigital">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                        
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="_subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map">
+                <!-- Google Maps embed -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.948125640793!2d67.02358437607491!3d24.86562124504978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e6c77012bd9%3A0xb160a7803df3e7c1!2sNaz%20Plaza!5e0!3m2!1sen!2s!4v1756157276615!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>TechMarkDigital</h3>
+                    <p>Providing comprehensive digital solutions for businesses for over 5 years with a focus on quality and customer satisfaction.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">WordPress Websites</a></li>
+                        <li><a href="#">Custom-Coded Websites</a></li>
+                        <li><a href="#">Website Maintenance</a></li>
+                        <li><a href="#">Social Media Marketing</a></li>
+                        <li><a href="#">SEO Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1ZBJf7y96F/" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/techmarkdigitalofficial?igsh=MXNuZGlpYXV6bzRrNA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TechMarkDigital. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/923310362567?text=Hello%20TechMarkDigital,%20I%20need%20information%20about%20your%20services" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        // Banner Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                currentSlide = (n + slides.length) % slides.length;
+                
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+            
+            // Auto slide change
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+            
+            // Dot click events
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+            
+            // Animated counters
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            function animateCounters() {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText.replace('+', '').replace('%', '');
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment) + (counter.getAttribute('data-count').includes('%') ? '%' : '+');
+                        setTimeout(animateCounters, 1);
+                    } else {
+                        counter.innerText = target + (counter.getAttribute('data-count').includes('%') ? '%' : '+');
+                    }
+                });
+            }
+            
+            // Trigger counter animation when element is in viewport
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+            
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Update active menu item on scroll
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-links a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href').substring(1) === current) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
