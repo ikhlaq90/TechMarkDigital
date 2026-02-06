@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMarkDigital - Contact Form Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 800px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2563eb;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .info-box {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .info-box h3 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .info-item {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .info-item strong {
+            display: block;
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .info-item span {
+            color: #1e293b;
+            font-size: 16px;
+            word-break: break-all;
+        }
+        
+        .test-area {
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .test-area h3 {
+            margin-bottom: 15px;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            color: white;
+            padding: 14px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #2563eb;
+            color: #2563eb;
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .instructions {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .instructions h3 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .steps {
+            list-style-type: none;
+            counter-reset: step-counter;
+        }
+        
+        .steps li {
+            margin-bottom: 15px;
+            padding-left: 45px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .steps li:before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #2563eb;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8fafc;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .info-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-right: 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-envelope"></i> Contact Form Configuration</h1>
+            <p>Verify your Google Apps Script setup</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> Current Configuration</h3>
+                <div class="info-content">
+                    <div class="info-item">
+                        <strong>Google Sheet ID</strong>
+                        <span>18CkQrdyd998nBjDHG5VVFGthh60hfZ7fCrSQihISUYM</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Email Recipient</strong>
+                        <span>ikhlaq.ashfaq1990@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="test-area">
+                <h3><i class="fas fa-flask"></i> Test Your Configuration</h3>
+                <p>Click the button below to test if your Google Apps Script is working correctly:</p>
+                
+                <button class="btn" id="test-script">
+                    <i class="fas fa-paper-plane"></i> Test Script
+                </button>
+                
+                <div class="result" id="test-result"></div>
+            </div>
+            
+            <div class="instructions">
+                <h3><i class="fas fa-tasks"></i> Next Steps</h3>
+                <ol class="steps">
+                    <li>Check your email at <strong>ikhlaq.ashfaq1990@gmail.com</strong> for test messages</li>
+                    <li>Verify your Google Sheet is receiving data</li>
+                    <li>Update your website with the corrected script URL</li>
+                    <li>Test the contact form on your live website</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>TechMarkDigital &copy; 2023 | All contact form submissions are sent to ikhlaq.ashfaq1990@gmail.com</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('test-script').addEventListener('click', function() {
+            const testResult = document.getElementById('test-result');
+            testResult.className = 'result';
+            testResult.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Testing your script...';
+            testResult.style.display = 'block';
+            
+            // Correct script URL (replace with your actual deployment ID)
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxjxhk6D8PqUn3OgUBV48XTadppORCy2NFyGonND3Zx4s8t7bKVCx2nveXMZrvQA1KpMA/exec';
+            
+            // Test data
+            const formData = new FormData();
+            formData.append('name', 'Test User');
+            formData.append('email', 'test@example.com');
+            formData.append('subject', 'Test Message from Configuration Checker');
+            formData.append('message', 'This is a test message to verify your Google Apps Script is working correctly.');
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    testResult.innerHTML = '<i class="fas fa-check-circle"></i> Success! Your script is working correctly. Check your email and Google Sheet.';
+                    testResult.className = 'result success';
+                } else {
+                    throw new Error(data.error || 'Unknown error');
+                }
+            })
+            .catch(error => {
+                testResult.innerHTML = `<i class="fas fa-exclamation-circle"></i> Error: ${error.message}. Please check your script URL and deployment.`;
+                testResult.className = 'result error';
+            });
+        });
+    </script>
+</body>
+</html>
