@@ -59,7 +59,27 @@
             width: 100%;
         }
         
-       
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-img {
+            background-image: url(./assets/logofile.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 150px;
+            height: 50px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
         .nav-links {
             display: flex;
             list-style: none;
@@ -887,7 +907,7 @@
                 z-index: 1001;
             }
             
-            .desktop-btn {
+            .btn {
                 display: none;
             }
         }
@@ -898,13 +918,8 @@
             }
             
             .logo-img {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-            
-            .logo-text span:first-child {
-                font-size: 20px;
+                width: 120px;
+                height: 40px;
             }
             
             .slide h1 {
@@ -1005,11 +1020,7 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <div class="logo-img">TMD</div>
-                    <div class="logo-text">
-                        <span>TechMarkDigital</span>
-                        <span>Complete Digital Solutions</span>
-                    </div>
+                    <div class="logo-img"></div>
                 </div>
                 
                 <ul class="nav-links">
